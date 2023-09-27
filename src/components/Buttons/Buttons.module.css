@@ -1,0 +1,22 @@
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 10px;
+    background: transparent;
+    text-align: center;
+    border: 1px solid SlateBlue;
+    height: 50px;
+    padding: 20px;
+}
+.btn {
+    background-color: SlateBlue;
+    border: none;
+    border-radius: 5px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.disabled {
+    opacity: 0.3;
+}

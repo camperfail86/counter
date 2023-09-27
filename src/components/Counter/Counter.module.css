@@ -1,0 +1,17 @@
+.counter {
+    background-color: SlateBlue;
+    font-size: 40px;
+    height: 93px;
+    color: black;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.limit {
+    color: DarkRed;
+}
+
+.error {
+    color: DarkRed;
+}

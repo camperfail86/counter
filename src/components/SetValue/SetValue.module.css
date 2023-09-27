@@ -1,0 +1,30 @@
+.element {
+    display: flex;
+    justify-content: space-between;
+    background: transparent;
+
+}
+
+.setValueBlock {
+    padding: 18px 10px;
+    color: SlateBlue;
+    background-color: transparent;
+    border: 1px solid SlateBlue;
+    font-size: 20px;
+    font-weight: 700;
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.input {
+    border: 1px solid SlateBlue;
+    color: black;
+    text-align: center;
+    font-size: 14px;
+}
+
+.error {
+    border: 1px solid crimson;
+    background: rgba(139, 0, 0, 1);
+}
