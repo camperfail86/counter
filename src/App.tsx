@@ -20,37 +20,19 @@ function App() {
     const isLimit = counter === counterMax
     const isInitialState = counter === counterStart
 
-    // useEffect(() => {
-        // let localStorageCounter = localStorage.getItem('counter')
-        // let localStorageCounterStart = localStorage.getItem('counterStart')
-        // if (localStorageCounter) {
-        //     let newValueCounter = JSON.parse(localStorageCounter)
-        //     setCounter(newValueCounter)
-        // }
-        // if (localStorageCounterStart) {
-        //     let newValueCounterStart = JSON.parse(localStorageCounterStart)
-        //     setCounterStart(newValueCounterStart)
-        // }
-    // }, [])
-
-    // useEffect(() => {
-    //     localStorage.setItem('counter', JSON.stringify(counter))
-    // }, [counter])
-
-    // useEffect(() => {
-    //     localStorage.setItem('counterStart', JSON.stringify(counterStart))
-    // }, [counterStart])
+    const editCounterNumber = (value: number) => {
+        setCounter(value)
+        localStorage.setItem('counter', JSON.stringify(value))
+    }
 
     const onClickHandlerPlus = () => {
         if (counter < counterMax) {
-            setCounter(counter + 1)
-            localStorage.setItem('counter', JSON.stringify(counter + 1))
+            editCounterNumber(counter + 1)
         }
     }
 
     const onClickHandlerNull = () => {
-        setCounter(counterStart)
-        localStorage.setItem('counter', JSON.stringify(counterStart))
+        editCounterNumber(counterStart)
     }
 
     const onChangeHandlerValueMax = (e: ChangeEvent<HTMLInputElement>) => {
@@ -61,7 +43,6 @@ function App() {
             setError(true)
             setErrorMax(true)
         } else {
-            // setTextForSet('')
             setTextForSet('Нажмите set')
             setError(false)
             setErrorMax(false)
