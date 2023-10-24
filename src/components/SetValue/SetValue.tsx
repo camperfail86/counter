@@ -2,7 +2,7 @@ import React, {ChangeEvent} from 'react';
 import s from './SetValue.module.css'
 
 type setValuePropsType = {
-    errorMax: boolean
+    // errorMax: boolean
     error: boolean
     counter: number
     counterMax: number
@@ -16,7 +16,7 @@ export const SetValue = (props: setValuePropsType) => {
         <div className={s.setValueBlock}>
             <div className={s.element}>
                 <span>max value:</span>
-                <input onChange={props.onChangeHandlerValueMax} className={`${s.input} ${props.errorMax ? s.error : ''}`} type="number" value={props.counterMax}/>
+                <input onChange={props.onChangeHandlerValueMax} className={`${s.input} ${props.error ? s.error : ''}`} type="number" value={props.counterMax}/>
             </div>
             <div className={s.element}>
                 <span>start value:</span>
