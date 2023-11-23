@@ -1,4 +1,3 @@
-import React from 'react';
 import s from './Counter.module.css'
 
 type CounterPropsType = {
@@ -9,10 +8,10 @@ type CounterPropsType = {
 }
 
 export const Counter = (props: CounterPropsType) => {
-  let textForSet = props.textForSet
+  const  {textForSet, isLimit, error, counter} = props
   return (
-    <div className={`${s.counter} ${props.isLimit ? s.limit : ''} ${props.error ? s.error : ''}`}>
-      {textForSet ? textForSet : props.counter}
+    <div className={`${s.counter} ${isLimit ? s.limit : ''} ${error ? s.error : ''}`}>
+      {textForSet ? textForSet : counter}
     </div>
   );
 };

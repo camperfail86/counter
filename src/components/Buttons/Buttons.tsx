@@ -10,17 +10,25 @@ type ButtonsPropsType = {
     textForSet: string
 }
 
-export const Buttons = (props: ButtonsPropsType) => {
+export const Buttons = ({
+                            isLimit,
+                            isInitialState,
+                            textForSet,
+                            onClickHandlerPlus,
+                            onClickHandlerNull
+}: ButtonsPropsType
+) => {
     return (
         <div className={s.buttons}>
-            <Button disabled={props.isLimit || Boolean(props.textForSet)}
-                    callback={props.onClickHandlerPlus}
-                    title={'+1'}
-                    classname={`${s.btn} ${props.isLimit || Boolean(props.textForSet) ? s.disabled : ''}`}/>
-            <Button disabled={props.isInitialState || Boolean(props.textForSet)}
-                    callback={props.onClickHandlerNull}
-                    title={'Заново'}
-                    classname={`${s.btn} ${props.isInitialState || Boolean(props.textForSet) ? s.disabled : ''}`}/>
+            <Button disabled={isLimit || Boolean(textForSet)}
+                    callback={onClickHandlerPlus}
+                    title='+1'
+                    className={`${s.btn} ${isLimit || Boolean(textForSet) ? s.disabled : ''}`}
+            />
+            <Button disabled={isInitialState || Boolean(textForSet)}
+                    callback={onClickHandlerNull}
+                    title='Заново'
+                    className={`${s.btn} ${isInitialState || Boolean(textForSet) ? s.disabled : ''}`}/>
         </div>
     );
 };

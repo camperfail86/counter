@@ -1,4 +1,7 @@
-import React from 'react';
+import React, {ButtonHTMLAttributes, DetailedHTMLProps} from 'react';
+
+
+type DefaultButtonProps = DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>
 
 type ButtonPropsType = {
     disabled: boolean
@@ -7,12 +10,19 @@ type ButtonPropsType = {
     classname: string
 }
 
-export const Button = (props: ButtonPropsType) => {
+type ButtonProps = DefaultButtonProps & {
+    callback: () => void
+    title: string
+   // classname: string
+}
+
+export const Button = ({callback, title, ...restProps}: ButtonProps) => {
     return (
         <button
-            disabled={props.disabled}
-            onClick={props.callback}
-            className={props.classname}>{props.title}
+            onClick={callback}
+            {...restProps}
+        >
+            {title}
         </button>
     );
 };

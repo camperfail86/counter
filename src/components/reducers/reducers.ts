@@ -1,4 +1,4 @@
-export type inStateType = {
+export type InStateType = {
     counter: number
     counterMax: number
     counterMin: number
@@ -8,7 +8,7 @@ export type inStateType = {
 }
 
 
-let initialState: inStateType = {
+let initialState: InStateType = {
     counter: 0,
     counterMax: 5,
     counterMin: 0,
@@ -18,7 +18,7 @@ let initialState: inStateType = {
 }
 
 type ActionType =
-    editTextForSetType
+    | editTextForSetType
     | counterAddOneType
     | inputNumberCounterMaxType
     | inputNumberCounterMinType
@@ -26,7 +26,7 @@ type ActionType =
     | editErrorType
     | editErrorMaxType
 
-export const CounterReducer = (state = initialState, action: ActionType) => {
+export const counterReducer = (state = initialState, action: ActionType): InStateType => {
     switch (action.type) {
         case 'ADD-ONE': {
             return {...state, counter: state.counter + 1}

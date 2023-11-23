@@ -10,10 +10,10 @@ type ButtonSetValuePropsType = {
 export const ButtonSetValue = (props: ButtonSetValuePropsType) => {
     return (
         <div className={s.buttonBlock}>
-            <Button classname={`${s.btn} ${props.error ? s.disabled : ''}`}
+            <Button className={`${s.btn} ${props.error ? s.disabled : ''}`}
                     disabled={props.error}
                     callback={props.onClickSetValue}
-                    title={'set'}/>
+                    title='set'/>
         </div>
     );
 };

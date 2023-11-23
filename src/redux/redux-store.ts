@@ -1,8 +1,19 @@
-import {CounterReducer} from "../components/reducers/reducers";
+import {counterReducer} from "../components/reducers/reducers";
 import {combineReducers, legacy_createStore} from "redux";
 
 export const rootReducer = combineReducers({
-    values: CounterReducer,
+    values: counterReducer,
 })
 export type rootReducerType = ReturnType<typeof rootReducer>
-export const store = legacy_createStore(rootReducer);
+
+let preloadedState;
+let persistedString = localStorage.getItem('state')
+if (persistedString) {
+    preloadedState = JSON.parse(persistedString)
+}
+
+export const store = legacy_createStore(rootReducer, preloadedState);
+
+store.subscribe(() => {
+    localStorage.setItem('state', JSON.stringify(store.getState()))
+})

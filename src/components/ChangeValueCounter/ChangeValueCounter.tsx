@@ -1,8 +1,7 @@
 import React, {ChangeEvent} from 'react';
-import s from './SetValue.module.css'
+import s from './ChangeValueCounter.module.css'
 
 type setValuePropsType = {
-    // errorMax: boolean
     error: boolean
     counter: number
     counterMax: number
@@ -11,7 +10,7 @@ type setValuePropsType = {
     onChangeHandlerValueStart:(e: ChangeEvent<HTMLInputElement>) => void
 }
 
-export const SetValue = (props: setValuePropsType) => {
+export const ChangeValueCounter = (props: setValuePropsType) => {
     return (
         <div className={s.setValueBlock}>
             <div className={s.element}>

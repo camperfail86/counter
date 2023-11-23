@@ -3,7 +3,7 @@ import './App.css';
 import {Counter} from "./components/Counter/Counter";
 import {Buttons} from "./components/Buttons/Buttons";
 import {ButtonSetValue} from "./components/ButtonSetValue/ButtonSetValue";
-import {SetValue} from "./components/SetValue/SetValue";
+import {ChangeValueCounter} from "./components/ChangeValueCounter/ChangeValueCounter";
 import {useDispatch, useSelector} from "react-redux";
 import {rootReducerType} from "./redux/redux-store";
 import {
@@ -11,7 +11,7 @@ import {
     editCounter, editError, editErrorMax,
     editTextForSet,
     inputNumberCounterMax, inputNumberCounterMin,
-    inStateType
+    InStateType
 } from "./components/reducers/reducers";
 
 // const counterLC = localStorage.getItem('counter')
@@ -22,15 +22,9 @@ function App() {
     // let [counter, setCounter] = useState(counterLC ? JSON.parse(counterLC) : 0)
     // let [counterMax, setCounterMax] = useState(counterMaxLC? JSON.parse(counterMaxLC) : 5)
     // let [counterStart, setCounterStart] = useState(counterStartLC? JSON.parse(counterStartLC) : 0)
-
-    let values = useSelector<rootReducerType, inStateType>((state) => state.values)
+    let values = useSelector<rootReducerType, InStateType>((state) => state.values)
     const dispatch = useDispatch()
-    let counter = values.counter
-    let counterMax = values.counterMax
-    let counterMin = values.counterMin
-    let textForSet = values.textForSet
-    let error = values.error
-    // let errorMax = values.errorMax
+    const {counter, error, counterMax, counterMin, textForSet} = values
     const isLimit = counter === counterMax
     const isInitialState = counter === counterMin
 
@@ -55,11 +49,9 @@ function App() {
         if (+e.currentTarget.value < 0 || +e.currentTarget.value === counterMin) {
             dispatch(editTextForSet('Неверное значение'))
             dispatch(editError(true))
-            dispatch(editErrorMax(true))
         } else {
             dispatch(editTextForSet('Нажмите set'))
             dispatch(editError(false))
-            dispatch(editErrorMax(false))
         }
     }
 
@@ -95,8 +87,7 @@ function App() {
                 />
             </div>
             <div className="block">
-                <SetValue
-                    // errorMax={errorMax}
+                <ChangeValueCounter
                     error={error}
                     onChangeHandlerValueStart={onChangeHandlerValueStart}
                     onChangeHandlerValueMax={onChangeHandlerValueMax}
